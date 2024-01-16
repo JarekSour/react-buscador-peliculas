@@ -1,13 +1,17 @@
 import { TMovie } from '../types/movies'
+import default_img from '../assets/default.webp'
 
 export function ListOfMovies({ movies }: { movies: TMovie[] }) {
     return (
-        <ul>
+        <ul className='movies'>
             {movies.map((movie) => (
-                <li key={movie.id}>
-                    <img src={movie.poster} alt={movie.title} />
-                    <h2>{movie.title}</h2>
+                <li className="movie" key={movie.id}>
+                    <h3>{movie.title}</h3>
                     <p>{movie.year}</p>
+                    {
+                        movie.poster === "N/A" ? 
+                        <img src={default_img} alt="" /> : <img src={movie.poster} alt={movie.title} />
+                    }
                 </li>
             ))}
         </ul>
